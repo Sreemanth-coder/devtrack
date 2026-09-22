@@ -1,0 +1,12 @@
+import { queryOptions } from "@tanstack/react-query";
+import { apiGet } from "./client";
+import type { CareerAnalytics, DsaStats, GithubActivity, GithubAnalytics, LeetcodeStats, Project, Skill, SkillEvidence, User } from "./types";
+export const userQuery = queryOptions({ queryKey: ["user"], queryFn: () => apiGet<User>("/api/users/me"), retry: false });
+export const dsaQuery = queryOptions({ queryKey: ["dsa", "stats"], queryFn: () => apiGet<DsaStats>("/api/dsa/stats"), retry: 1 });
+export const skillsQuery = queryOptions({ queryKey: ["skills"], queryFn: () => apiGet<Skill[]>("/api/skills"), retry: 1 });
+export const projectsQuery = queryOptions({ queryKey: ["projects"], queryFn: () => apiGet<Project[]>("/api/projects"), retry: 1 });
+export const githubAnalyticsQuery = queryOptions({ queryKey: ["github", "analytics"], queryFn: () => apiGet<GithubAnalytics>("/api/github/analytics"), retry: 1 });
+export const githubActivityQuery = queryOptions({ queryKey: ["github", "activity"], queryFn: () => apiGet<GithubActivity>("/api/github/activity"), retry: 1 });
+export const skillEvidenceQuery = queryOptions({ queryKey: ["github", "skill-evidence"], queryFn: () => apiGet<SkillEvidence[]>("/api/github/skill-evidence"), retry: 1 });
+export const leetcodeQuery = queryOptions({ queryKey: ["leetcode", "stats"], queryFn: () => apiGet<LeetcodeStats>("/api/leetcode/stats"), retry: 1 });
+export const careerQuery = queryOptions({ queryKey: ["career", "analytics"], queryFn: () => apiGet<CareerAnalytics>("/api/career/analytics"), retry: 1 });

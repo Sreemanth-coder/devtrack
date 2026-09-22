@@ -1,0 +1,51 @@
+services:
+  # Note: this containerized MySQL uses its own dedicated app user
+  # (devtrack/devtrack), separate from the DB_USERNAME=root / DB_NAME=devtracker
+  # defaults in .env.example, which are for connecting to a MySQL instance
+  # already running on your host machine. The two paths use different
+  # credentials on purpose - pick one and keep its env vars consistent.
+  mysql:
+    image: mysql:8.4
+    container_name: devtrack-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: devtrack
+      MYSQL_USER: devtrack
+      MYSQL_PASSWORD: devtrack
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-devtrack_root}
+    ports:
+      - "3306:3306"
+    volumes:
+      - devtrack_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    container_name: devtrack-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: devtrack
+      DB_USERNAME: devtrack
+      DB_PASSWORD: devtrack
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_ACCESS_EXP_MS: ${JWT_ACCESS_EXP_MS:-3600000}
+      JWT_REFRESH_EXP_MS: ${JWT_REFRESH_EXP_MS:-604800000}
+      CORS_ALLOWED_ORIGINS: ${CORS_ALLOWED_ORIGINS:-http://localhost:5173}
+      GITHUB_CLIENT_ID: ${GITHUB_CLIENT_ID:-}
+      GITHUB_CLIENT_SECRET: ${GITHUB_CLIENT_SECRET:-}
+    ports:
+      - "8080:8080"
+
+  # frontend service will be added in Phase 7
+
+volumes:
+  devtrack_mysql_data:

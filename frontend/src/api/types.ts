@@ -1,0 +1,26 @@
+export type User = { id: number; name: string; email: string; githubUsername: string | null; createdAt: string };
+export type DifficultyBreakdown = { easy: number; medium: number; hard: number };
+export type TopicProgress = { topic?: string; topicName?: string; name?: string; totalProblems: number; solvedProblems: number; progressPercentage?: number };
+export type SolvedOverTime = { date: string; count?: number; solved?: number; problemsSolved?: number };
+export type DsaStats = { totalProblems: number; totalSolved: number; totalTodo: number; totalInProgress: number; difficultyBreakdown: DifficultyBreakdown; topicProgress: TopicProgress[]; problemsSolvedOverTime: SolvedOverTime[]; currentStreak: number; longestStreak: number };
+export type Skill = { id: number; name: string; category: string; custom: boolean };
+export type ProjectStatus = "COMPLETED" | "IN_PROGRESS" | "PLANNED" | "ARCHIVED";
+export type Project = { id: number; name: string; description: string | null; status: ProjectStatus; githubUrl: string | null; liveUrl: string | null; keyFeatures: string | null; challenges: string | null; learnings: string | null; resumeDescription: string | null; interviewNotes: string | null; skills: Skill[]; createdAt: string; updatedAt: string };
+export type GithubAnalytics = { forkedRepositories: number; languageDistribution: Record<string, number>; mostUsedLanguage: string | null; originalRepositories: number; totalForks: number; totalRepositories: number; totalStars: number };
+export type GithubActivity = { activeDays: number; commitsByDate: Record<string, number>; firstActivity: string | null; lastActivity: string | null; totalCommits: number };
+export type EvidenceLevel = "NO_EVIDENCE" | "BEGINNER" | "DEVELOPING" | "STRONG";
+export type SkillEvidence = { evidenceLevel: EvidenceLevel; repositoryCount: number; skillId: number; skillName: string; totalForks: number; totalStars: number };
+export type LeetcodeStats = { easySolved: number; hardSolved: number; mediumSolved: number; ranking: number | null; totalSolved: number; username: string | null };
+export type CareerAnalytics = {
+  careerScore: number;
+  consistency: { dsaCurrentStreak: number; dsaLongestStreak: number; githubActiveDays: number };
+  consistencyScore: number;
+  dsa: { currentStreak: number; devTrackSolved: number; easySolved: number; hardSolved: number; leetCodeSolved: number; longestStreak: number; mediumSolved: number };
+  dsaScore: number;
+  github: { activeDays: number; originalRepositories: number; repositories: number; totalCommits: number; totalForks: number; totalStars: number };
+  githubScore: number;
+  projects: { completedProjects: number; inProgressProjects: number; totalProjects: number };
+  projectsScore: number;
+  skills: { averageStrength: number; totalSkills: number };
+  skillsScore: number;
+};
