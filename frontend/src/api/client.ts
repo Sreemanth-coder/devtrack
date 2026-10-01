@@ -23,7 +23,7 @@ export async function apiGet<T>(path: string): Promise<T> {
     const response = await fetch(`${API_BASE_URL}${path}`, { headers: { Accept: "application/json", ...(token ? { Authorization: `Bearer ${token}` } : {}) }, credentials: "include" });
     if (!response.ok) {
       const kind = response.status === 401 ? "unauthorized" : response.status === 403 ? "forbidden" : "server";
-      throw new ApiError(response.status === 401 ? "Your session is missing or has expired." : response.status === 403 ? "You do not have access to this data." : "The service is temporarily unavailable.", response.status, kind);
+      throw new ApiError(response.status === 401 ? "Your session is missing or has expired." : response.status === 403 ? "You do not have access to this data." : response.status === 429 ? "GitHub is temporarily rate-limiting requests. Please try again shortly." : "The service is temporarily unavailable.", response.status, kind);
     }
     return (await response.json()) as T;
   } catch (error) {

@@ -5,6 +5,10 @@ spring:
   application:
     name: devtrack-backend
 
+  cache:
+    caffeine:
+      spec: maximumSize=500,expireAfterWrite=15m
+
   datasource:
     url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:devtracker}?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: ${DB_USERNAME:root}
@@ -35,8 +39,7 @@ devtrack:
     client-id: ${GITHUB_CLIENT_ID:}
     client-secret: ${GITHUB_CLIENT_SECRET:}
   cors:
-    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5173,http://localhost:3000}
-
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:8081,http://localhost:5173,http://localhost:3000}
 logging:
   level:
     com.devtrack: ${LOG_LEVEL:INFO}

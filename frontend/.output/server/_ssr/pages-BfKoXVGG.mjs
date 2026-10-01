@@ -1,0 +1,1441 @@
+import { i as __toESM } from "../_runtime.mjs";
+import { u as require_react } from "../_libs/@floating-ui/react-dom+[...].mjs";
+import { p as require_jsx_runtime } from "../_libs/@radix-ui/react-avatar+[...].mjs";
+import { n as useQuery } from "../_libs/tanstack__react-query.mjs";
+import { D as ArrowUpRight, O as Activity, S as CircleCheck, T as BookOpenCheck, _ as FolderGit2, a as Target, b as Clock3, f as LockKeyhole, g as GitCommitHorizontal, h as GitFork, i as TriangleAlert, l as RefreshCw, m as Github, n as Wrench, o as Star, p as Layers, r as Trophy, v as Flame, x as CircleDot, y as CodeXml } from "../_libs/lucide-react.mjs";
+import { t as cva } from "../_libs/class-variance-authority+clsx.mjs";
+import { _ as leetcodeQuery, a as DialogDescription, b as skillEvidenceQuery, c as DialogTitle, d as careerQuery, f as cn, g as githubAnalyticsQuery, h as githubActivityQuery, i as DialogContent, l as DialogTrigger, n as Button, p as dsaQuery, r as Dialog, s as DialogHeader, t as ApiError, u as Skeleton, v as projectsQuery, x as skillsQuery } from "./dialog-Cv4722xo.mjs";
+import { n as format, t as parseISO } from "../_libs/date-fns.mjs";
+import { a as CartesianGrid, c as Cell, i as XAxis, l as ResponsiveContainer, n as BarChart, o as Bar, r as YAxis, s as Pie, t as PieChart, u as Tooltip } from "../_libs/recharts+[...].mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/pages-BfKoXVGG.js
+var import_react = /* @__PURE__ */ __toESM(require_react());
+var import_jsx_runtime = require_jsx_runtime();
+var badgeVariants = cva("inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2", {
+	variants: { variant: {
+		default: "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
+		secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+		destructive: "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
+		outline: "text-foreground"
+	} },
+	defaultVariants: { variant: "default" }
+});
+function Badge({ className, variant, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: cn(badgeVariants({ variant }), className),
+		...props
+	});
+}
+function SectionHeader({ title, description, action }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "flex items-end justify-between gap-4",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+			className: "text-base font-semibold text-foreground",
+			children: title
+		}), description ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-1 text-sm text-muted-foreground",
+			children: description
+		}) : null] }), action]
+	});
+}
+function MetricCard({ label, value, hint, icon: Icon, accent = false }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: cn("metric-card group", accent && "metric-card-accent"),
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "flex items-center justify-between",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "text-xs font-medium uppercase text-muted-foreground",
+					children: label
+				}), Icon ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Icon, { className: "size-4 text-muted-foreground transition-colors group-hover:text-primary" }) : null]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-3 font-mono text-2xl font-semibold tabular-nums text-foreground",
+				children: value ?? "—"
+			}),
+			hint ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-1 text-xs text-muted-foreground",
+				children: hint
+			}) : null
+		]
+	});
+}
+function ProgressBar({ value, className }) {
+	const safe = Math.max(0, Math.min(100, Number.isFinite(value) ? value : 0));
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: cn("h-1.5 overflow-hidden rounded-full bg-secondary", className),
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "h-full rounded-full bg-primary transition-[width] duration-700",
+			style: { width: `${safe}%` }
+		})
+	});
+}
+function ScoreRing({ value, label = "Career Score", size = "large" }) {
+	const safe = Math.max(0, Math.min(100, value || 0));
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: cn("relative grid place-items-center rounded-full", size === "large" ? "size-52" : "size-32"),
+		style: { background: `conic-gradient(var(--primary) ${safe * 3.6}deg, var(--secondary) 0deg)` },
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "absolute inset-2 grid place-items-center rounded-full bg-card",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "text-center",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: cn("font-mono font-semibold tabular-nums", size === "large" ? "text-4xl" : "text-2xl"),
+					children: [safe, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: "text-base text-muted-foreground",
+						children: "/100"
+					})]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-1 text-xs font-medium uppercase text-muted-foreground",
+					children: label
+				})]
+			})
+		})
+	});
+}
+function LoadingGrid({ count = 4 }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "grid gap-3 sm:grid-cols-2 xl:grid-cols-4",
+		children: Array.from({ length: count }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "metric-card",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "h-3 w-24" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "mt-4 h-8 w-16" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Skeleton, { className: "mt-3 h-2 w-full" })
+			]
+		}, i))
+	});
+}
+function EmptyState({ title, description }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "grid min-h-48 place-items-center rounded-lg border border-dashed border-border bg-muted/20 p-8 text-center",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "font-medium text-foreground",
+			children: title
+		}), description ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-1 text-sm text-muted-foreground",
+			children: description
+		}) : null] })
+	});
+}
+function ErrorState({ error, message, retry }) {
+	const auth = error instanceof ApiError && (error.kind === "unauthorized" || error.kind === "forbidden");
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "grid min-h-44 place-items-center rounded-lg border border-border bg-card p-6 text-center",
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+			auth ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LockKeyhole, { className: "mx-auto size-5 text-warning" }) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(TriangleAlert, { className: "mx-auto size-5 text-destructive" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-3 font-medium text-foreground",
+				children: auth ? error.message : message
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-1 text-sm text-muted-foreground",
+				children: auth ? "Connect your backend login flow to continue." : "Other dashboard sections remain available."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+				variant: "outline",
+				size: "sm",
+				className: "mt-4",
+				onClick: retry,
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(RefreshCw, {}), "Retry"]
+			})
+		] })
+	});
+}
+function Panel({ children, className }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("section", {
+		className: cn("panel", className),
+		children
+	});
+}
+function ContributionHeatmap({ commitsByDate }) {
+	const entries = (0, import_react.useMemo)(() => Object.entries(commitsByDate).sort(([a], [b]) => a.localeCompare(b)), [commitsByDate]);
+	if (!entries.length) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmptyState, { title: "No GitHub activity found for the selected period." });
+	const max = Math.max(...entries.map(([, count]) => count), 1);
+	const level = (count) => Math.max(1, Math.ceil(count / max * 4));
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "overflow-x-auto pb-2",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "grid min-w-max grid-flow-col grid-rows-7 gap-1",
+			role: "img",
+			"aria-label": "GitHub contribution activity",
+			children: entries.map(([date, count]) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				title: `${format(parseISO(date), "MMM d, yyyy")}: ${count} commit${count === 1 ? "" : "s"}`,
+				"aria-label": `${date}: ${count} commits`,
+				className: `heat-cell heat-${level(count)}`
+			}, date))
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "mt-3 flex items-center justify-end gap-1 text-xs text-muted-foreground",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "mr-1",
+					children: "Less"
+				}),
+				[
+					0,
+					1,
+					2,
+					3,
+					4
+				].map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: `heat-cell heat-${item}` }, item)),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "ml-1",
+					children: "More"
+				})
+			]
+		})]
+	});
+}
+var THEMES = {
+	light: "",
+	dark: ".dark"
+};
+var ChartContext = import_react.createContext(null);
+function useChart() {
+	const context = import_react.useContext(ChartContext);
+	if (!context) throw new Error("useChart must be used within a <ChartContainer />");
+	return context;
+}
+var ChartContainer = import_react.forwardRef(({ id, className, children, config, ...props }, ref) => {
+	const uniqueId = import_react.useId();
+	const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartContext.Provider, {
+		value: { config },
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			"data-chart": chartId,
+			ref,
+			className: cn("flex aspect-video justify-center text-xs [&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-border/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-none [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-border [&_.recharts-radial-bar-background-sector]:fill-muted [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted [&_.recharts-reference-line_[stroke='#ccc']]:stroke-border [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-sector]:outline-none [&_.recharts-surface]:outline-none", className),
+			...props,
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartStyle, {
+				id: chartId,
+				config
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ResponsiveContainer, { children })]
+		})
+	});
+});
+ChartContainer.displayName = "Chart";
+var ChartStyle = ({ id, config }) => {
+	const colorConfig = Object.entries(config).filter(([, config]) => config.theme || config.color);
+	if (!colorConfig.length) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("style", { dangerouslySetInnerHTML: { __html: Object.entries(THEMES).map(([theme, prefix]) => `
+${prefix} [data-chart=${id}] {
+${colorConfig.map(([key, itemConfig]) => {
+		const color = itemConfig.theme?.[theme] || itemConfig.color;
+		return color ? `  --color-${key}: ${color};` : null;
+	}).join("\n")}
+}
+`).join("\n") } });
+};
+var ChartTooltip = Tooltip;
+var ChartTooltipContent = import_react.forwardRef(({ active, payload, className, indicator = "dot", hideLabel = false, hideIndicator = false, label, labelFormatter, labelClassName, formatter, color, nameKey, labelKey }, ref) => {
+	const { config } = useChart();
+	const tooltipLabel = import_react.useMemo(() => {
+		if (hideLabel || !payload?.length) return null;
+		const [item] = payload;
+		const key = `${labelKey || item?.dataKey || item?.name || "value"}`;
+		const itemConfig = getPayloadConfigFromPayload(config, item, key);
+		const value = !labelKey && typeof label === "string" ? config[label]?.label || label : itemConfig?.label;
+		if (labelFormatter) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: cn("font-medium", labelClassName),
+			children: labelFormatter(value, payload)
+		});
+		if (!value) return null;
+		return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: cn("font-medium", labelClassName),
+			children: value
+		});
+	}, [
+		label,
+		labelFormatter,
+		payload,
+		hideLabel,
+		labelClassName,
+		config,
+		labelKey
+	]);
+	if (!active || !payload?.length) return null;
+	const nestLabel = payload.length === 1 && indicator !== "dot";
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		ref,
+		className: cn("grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl", className),
+		children: [!nestLabel ? tooltipLabel : null, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "grid gap-1.5",
+			children: payload.filter((item) => item.type !== "none").map((item, index) => {
+				const key = `${nameKey || item.name || item.dataKey || "value"}`;
+				const itemConfig = getPayloadConfigFromPayload(config, item, key);
+				const indicatorColor = color || item.payload.fill || item.color;
+				return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: cn("flex w-full flex-wrap items-stretch gap-2 [&>svg]:h-2.5 [&>svg]:w-2.5 [&>svg]:text-muted-foreground", indicator === "dot" && "items-center"),
+					children: formatter && item?.value !== void 0 && item.name ? formatter(item.value, item.name, item, index, item.payload) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [itemConfig?.icon ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(itemConfig.icon, {}) : !hideIndicator && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: cn("shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)", {
+							"h-2.5 w-2.5": indicator === "dot",
+							"w-1": indicator === "line",
+							"w-0 border-[1.5px] border-dashed bg-transparent": indicator === "dashed",
+							"my-0.5": nestLabel && indicator === "dashed"
+						}),
+						style: {
+							"--color-bg": indicatorColor,
+							"--color-border": indicatorColor
+						}
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: cn("flex flex-1 justify-between leading-none", nestLabel ? "items-end" : "items-center"),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid gap-1.5",
+							children: [nestLabel ? tooltipLabel : null, /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "text-muted-foreground",
+								children: itemConfig?.label || item.name
+							})]
+						}), item.value && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+							className: "font-mono font-medium tabular-nums text-foreground",
+							children: item.value.toLocaleString()
+						})]
+					})] })
+				}, item.dataKey);
+			})
+		})]
+	});
+});
+ChartTooltipContent.displayName = "ChartTooltip";
+var ChartLegendContent = import_react.forwardRef(({ className, hideIcon = false, payload, verticalAlign = "bottom", nameKey }, ref) => {
+	const { config } = useChart();
+	if (!payload?.length) return null;
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		ref,
+		className: cn("flex items-center justify-center gap-4", verticalAlign === "top" ? "pb-3" : "pt-3", className),
+		children: payload.filter((item) => item.type !== "none").map((item) => {
+			const key = `${nameKey || item.dataKey || "value"}`;
+			const itemConfig = getPayloadConfigFromPayload(config, item, key);
+			return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: cn("flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"),
+				children: [itemConfig?.icon && !hideIcon ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(itemConfig.icon, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "h-2 w-2 shrink-0 rounded-[2px]",
+					style: { backgroundColor: item.color }
+				}), itemConfig?.label]
+			}, item.value);
+		})
+	});
+});
+ChartLegendContent.displayName = "ChartLegend";
+function getPayloadConfigFromPayload(config, payload, key) {
+	if (typeof payload !== "object" || payload === null) return;
+	const payloadPayload = "payload" in payload && typeof payload.payload === "object" && payload.payload !== null ? payload.payload : void 0;
+	let configLabelKey = key;
+	if (key in payload && typeof payload[key] === "string") configLabelKey = payload[key];
+	else if (payloadPayload && key in payloadPayload && typeof payloadPayload[key] === "string") configLabelKey = payloadPayload[key];
+	return configLabelKey in config ? config[configLabelKey] : config[key];
+}
+var chartColors = [
+	"var(--chart-1)",
+	"var(--chart-2)",
+	"var(--chart-3)",
+	"var(--chart-4)",
+	"var(--chart-5)"
+];
+function DifficultyChart({ easy, medium, hard }) {
+	const data = [
+		{
+			name: "Easy",
+			value: easy
+		},
+		{
+			name: "Medium",
+			value: medium
+		},
+		{
+			name: "Hard",
+			value: hard
+		}
+	];
+	if (!(easy + medium + hard)) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmptyState, { title: "No difficulty data yet" });
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartContainer, {
+		className: "mx-auto h-56 max-w-sm",
+		config: { value: {
+			label: "Solved",
+			color: "var(--primary)"
+		} },
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(PieChart, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartTooltip, { content: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartTooltipContent, { hideLabel: true }) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Pie, {
+			data,
+			dataKey: "value",
+			nameKey: "name",
+			innerRadius: 58,
+			outerRadius: 82,
+			paddingAngle: 3,
+			children: data.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Cell, { fill: chartColors[index] }, item.name))
+		})] })
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+		className: "flex justify-center gap-5",
+		children: data.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "flex items-center gap-2 text-xs text-muted-foreground",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "size-2 rounded-sm",
+					style: { backgroundColor: chartColors[index] }
+				}),
+				item.name,
+				" ",
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", {
+					className: "font-mono text-foreground",
+					children: item.value
+				})
+			]
+		}, item.name))
+	})] });
+}
+function ScoreComparison({ data }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartContainer, {
+		className: "h-72 w-full",
+		config: { score: {
+			label: "Score",
+			color: "var(--primary)"
+		} },
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(BarChart, {
+			data,
+			margin: {
+				left: -20,
+				right: 8,
+				top: 10
+			},
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CartesianGrid, {
+					vertical: false,
+					strokeDasharray: "4 4"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(XAxis, {
+					dataKey: "name",
+					tickLine: false,
+					axisLine: false
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(YAxis, {
+					domain: [0, 100],
+					tickLine: false,
+					axisLine: false
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartTooltip, { content: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartTooltipContent, {}) }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bar, {
+					dataKey: "score",
+					fill: "var(--primary)",
+					radius: [
+						4,
+						4,
+						0,
+						0
+					],
+					maxBarSize: 48
+				})
+			]
+		})
+	});
+}
+function LanguageChart({ distribution }) {
+	const data = Object.entries(distribution).map(([name, value]) => ({
+		name,
+		value
+	}));
+	if (!data.length) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmptyState, { title: "No language data available" });
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartContainer, {
+		className: "h-64 w-full",
+		config: { value: {
+			label: "Repositories",
+			color: "var(--primary)"
+		} },
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(BarChart, {
+			layout: "vertical",
+			data,
+			margin: {
+				left: 8,
+				right: 12
+			},
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(CartesianGrid, {
+					horizontal: false,
+					strokeDasharray: "4 4"
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(XAxis, {
+					type: "number",
+					hide: true
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(YAxis, {
+					dataKey: "name",
+					type: "category",
+					width: 88,
+					tickLine: false,
+					axisLine: false
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartTooltip, { content: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ChartTooltipContent, {}) }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Bar, {
+					dataKey: "value",
+					fill: "var(--primary)",
+					radius: [
+						0,
+						4,
+						4,
+						0
+					],
+					maxBarSize: 24
+				})
+			]
+		})
+	});
+}
+var label = {
+	NO_EVIDENCE: "No evidence",
+	BEGINNER: "Beginner",
+	DEVELOPING: "Developing",
+	STRONG: "Strong"
+};
+function EvidenceBadge({ level }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+		className: `evidence evidence-${level.toLowerCase()}`,
+		variant: "outline",
+		children: label[level]
+	});
+}
+function EvidenceList({ items }) {
+	if (!items.length) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmptyState, { title: "No skill evidence available yet." });
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "overflow-hidden rounded-lg border border-border",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "hidden grid-cols-[1fr_120px_90px_90px_130px] gap-3 bg-muted/40 px-4 py-3 text-xs font-medium uppercase text-muted-foreground md:grid",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Skill" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Repositories" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Stars" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Forks" }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: "Evidence" })
+			]
+		}), items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+			className: "grid gap-3 border-t border-border px-4 py-4 first:border-t-0 md:grid-cols-[1fr_120px_90px_90px_130px] md:items-center",
+			children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+					className: "font-medium text-foreground",
+					children: item.skillName
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-2 md:hidden",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EvidenceBadge, { level: item.evidenceLevel })
+				})] }),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "text-sm text-muted-foreground",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", {
+						className: "mr-2 font-mono text-foreground md:hidden",
+						children: "Repositories"
+					}), item.repositoryCount]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "text-sm text-muted-foreground",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", {
+						className: "mr-2 font-mono text-foreground md:hidden",
+						children: "Stars"
+					}), item.totalStars]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+					className: "text-sm text-muted-foreground",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("b", {
+						className: "mr-2 font-mono text-foreground md:hidden",
+						children: "Forks"
+					}), item.totalForks]
+				}),
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "hidden md:block",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EvidenceBadge, { level: item.evidenceLevel })
+				})
+			]
+		}, item.skillId))]
+	});
+}
+function PageIntro({ eyebrow, title, description }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+		className: "mb-7",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "eyebrow",
+				children: eyebrow
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+				className: "mt-2 text-2xl font-semibold text-foreground sm:text-3xl",
+				children: title
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-2 max-w-2xl text-sm leading-6 text-muted-foreground",
+				children: description
+			})
+		]
+	});
+}
+function QueryBlock({ query, loading = 4, message, children }) {
+	if (query.isLoading) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LoadingGrid, { count: loading });
+	if (query.error || query.data === void 0) return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorState, {
+		error: query.error,
+		message,
+		retry: () => void query.refetch()
+	});
+	return children(query.data);
+}
+var fmt = (n) => n == null ? "—" : n.toLocaleString();
+function DashboardPage() {
+	const career = useQuery(careerQuery), dsa = useQuery(dsaQuery), leetcode = useQuery(leetcodeQuery), gh = useQuery(githubAnalyticsQuery), activity = useQuery(githubActivityQuery);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "page-wrap",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageIntro, {
+				eyebrow: "Overview",
+				title: "Developer Career Command Center",
+				description: "Track your coding progress, technical skills, projects and developer activity in one place."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+				query: career,
+				message: "Unable to load career analytics.",
+				children: (data) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+					className: "score-hero",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "score-copy",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "eyebrow",
+									children: "Career readiness"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+									className: "mt-3 text-xl font-semibold",
+									children: "One score. Every signal."
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-2 max-w-lg text-sm leading-6 text-muted-foreground",
+									children: "Calculated by your backend from DSA, skills, projects, GitHub activity and consistency."
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScoreRing, { value: data.careerScore }),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "score-metrics",
+							children: [
+								{
+									n: "DSA",
+									v: data.dsaScore
+								},
+								{
+									n: "Skills",
+									v: data.skillsScore
+								},
+								{
+									n: "Projects",
+									v: data.projectsScore
+								},
+								{
+									n: "GitHub",
+									v: data.githubScore
+								},
+								{
+									n: "Consistency",
+									v: data.consistencyScore
+								}
+							].map((x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "flex justify-between text-xs",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "text-muted-foreground",
+									children: x.n
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "font-mono",
+									children: x.v
+								})]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProgressBar, {
+								value: x.v,
+								className: "mt-2"
+							})] }, x.n))
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "mt-5 grid gap-5 lg:grid-cols-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+						title: "Skills snapshot",
+						description: "Current breadth and average evidence strength"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-5 grid grid-cols-2 gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Total skills",
+							value: data.skills.totalSkills,
+							icon: Layers
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Avg. strength",
+							value: `${data.skills.averageStrength}%`,
+							icon: Target
+						})]
+					})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+						title: "Project snapshot",
+						description: "Portfolio delivery status"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-5 grid grid-cols-3 gap-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Total",
+								value: data.projects.totalProjects
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Complete",
+								value: data.projects.completedProjects
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "In progress",
+								value: data.projects.inProgressProjects
+							})
+						]
+					})] })]
+				})] })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-5 grid gap-5 xl:grid-cols-2",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+						title: "DSA snapshot",
+						description: "DevTrack and LeetCode are tracked separately"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-5",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+							query: dsa,
+							loading: 3,
+							message: "Unable to load DevTrack DSA stats.",
+							children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-3 sm:grid-cols-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "DevTrack solved",
+										value: x.totalSolved
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Current streak",
+										value: x.currentStreak
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Longest streak",
+										value: x.longestStreak
+									})
+								]
+							})
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-3",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+							query: leetcode,
+							loading: 3,
+							message: "Unable to load LeetCode stats.",
+							children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-3 sm:grid-cols-4",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "LeetCode solved",
+										value: x.totalSolved,
+										accent: true
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Easy",
+										value: x.easySolved
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Medium",
+										value: x.mediumSolved
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Hard",
+										value: x.hardSolved
+									})
+								]
+							})
+						})
+					})
+				] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+						title: "GitHub snapshot",
+						description: "Repository reach and contribution activity"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-5",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+							query: gh,
+							loading: 3,
+							message: "Unable to load GitHub analytics.",
+							children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-3 sm:grid-cols-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Repositories",
+										value: x.totalRepositories
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Original",
+										value: x.originalRepositories
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Stars",
+										value: x.totalStars
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Forks",
+										value: x.totalForks
+									})
+								]
+							})
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-3",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+							query: activity,
+							loading: 2,
+							message: "Unable to load GitHub activity.",
+							children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-3",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+									label: "Commits",
+									value: x.totalCommits
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+									label: "Active days",
+									value: x.activeDays
+								})]
+							})
+						})
+					})
+				] })]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+				className: "mt-5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+					title: "Recent activity",
+					description: "Contribution intensity from dates returned by GitHub"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-6",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+						query: activity,
+						loading: 3,
+						message: "Unable to load GitHub activity.",
+						children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContributionHeatmap, { commitsByDate: x.commitsByDate })
+					})
+				})]
+			})
+		]
+	});
+}
+function DsaPage() {
+	const dsa = useQuery(dsaQuery), lc = useQuery(leetcodeQuery);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "page-wrap",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageIntro, {
+				eyebrow: "Practice intelligence",
+				title: "DSA Progress",
+				description: "See your DevTrack practice and LeetCode performance without mixing their totals."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+				query: dsa,
+				loading: 6,
+				message: "Unable to load DevTrack DSA stats.",
+				children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "grid gap-3 sm:grid-cols-2 xl:grid-cols-6",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Total problems",
+								value: x.totalProblems,
+								icon: CodeXml
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Solved",
+								value: x.totalSolved,
+								icon: CircleCheck
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Todo",
+								value: x.totalTodo,
+								icon: CircleDot
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "In progress",
+								value: x.totalInProgress,
+								icon: Clock3
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Current streak",
+								value: x.currentStreak,
+								icon: Flame
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Longest streak",
+								value: x.longestStreak,
+								icon: Trophy
+							})
+						]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-5 grid gap-5 lg:grid-cols-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, { title: "Difficulty distribution" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-4",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DifficultyChart, { ...x.difficultyBreakdown })
+						})] }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, { title: "Topic progress" }), x.topicProgress.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-6 space-y-5",
+							children: x.topicProgress.map((t, i) => {
+								const percent = t.progressPercentage ?? (t.totalProblems ? t.solvedProblems / t.totalProblems * 100 : 0);
+								return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex justify-between text-sm",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: t.topic ?? t.topicName ?? t.name ?? "Topic" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+										className: "font-mono text-muted-foreground",
+										children: [
+											t.solvedProblems,
+											"/",
+											t.totalProblems
+										]
+									})]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProgressBar, {
+									value: percent,
+									className: "mt-2"
+								})] }, `${t.topic ?? t.topicName ?? t.name}-${i}`);
+							})
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-4",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmptyState, { title: "No topic progress yet." })
+						})] })]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+						className: "mt-5",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, { title: "Problems solved over time" }), x.problemsSolvedOverTime.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4",
+							children: x.problemsSolvedOverTime.map((p) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: format(parseISO(p.date), "MMM d"),
+								value: p.count ?? p.solved ?? p.problemsSolved ?? 0
+							}, p.date))
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-5",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmptyState, { title: "No DevTrack DSA activity yet" })
+						})]
+					})
+				] })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+				className: "mt-5 leetcode-panel",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+					title: "LeetCode",
+					description: "External problem-solving profile"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-5",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+						query: lc,
+						loading: 4,
+						message: "Unable to load LeetCode stats.",
+						children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid gap-5 lg:grid-cols-[1fr_1.4fr]",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "grid grid-cols-2 gap-3",
+								children: [
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Total solved",
+										value: x.totalSolved,
+										accent: true
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Ranking",
+										value: fmt(x.ranking)
+									}),
+									/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+										label: "Username",
+										value: x.username ?? "—"
+									})
+								]
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DifficultyChart, {
+								easy: x.easySolved,
+								medium: x.mediumSolved,
+								hard: x.hardSolved
+							})]
+						})
+					})
+				})]
+			})
+		]
+	});
+}
+function SkillsPage() {
+	const skills = useQuery(skillsQuery), evidence = useQuery(skillEvidenceQuery), career = useQuery(careerQuery);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "page-wrap",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageIntro, {
+				eyebrow: "Technical profile",
+				title: "Skills",
+				description: "Your declared stack and the repository evidence that supports it."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+				query: career,
+				loading: 2,
+				message: "Unable to load skill analytics.",
+				children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "grid gap-3 sm:grid-cols-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+						label: "Total skills",
+						value: x.skills.totalSkills,
+						icon: Layers
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+						label: "Average strength",
+						value: `${x.skills.averageStrength}%`,
+						icon: Target
+					})]
+				})
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+				className: "mt-5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+					title: "Skill inventory",
+					description: "Grouped by category"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-5",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+						query: skills,
+						loading: 4,
+						message: "Unable to load skills.",
+						children: (items) => items.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "grid gap-4 lg:grid-cols-2",
+							children: Object.entries(items.reduce((a, s) => {
+								(a[s.category] ??= []).push(s);
+								return a;
+							}, {})).map(([category, list]) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+								className: "skill-group",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+									className: "flex items-center gap-2",
+									children: [
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Wrench, { className: "size-4 text-primary" }),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h3", {
+											className: "font-medium",
+											children: category.replaceAll("_", " ")
+										}),
+										/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+											variant: "outline",
+											className: "ml-auto",
+											children: list.length
+										})
+									]
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+									className: "mt-4 flex flex-wrap gap-2",
+									children: list.map((skill) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "skill-chip",
+										children: skill.name
+									}, skill.id))
+								})]
+							}, category))
+						}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmptyState, { title: "No skills added yet." })
+					})
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+				className: "mt-5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+					title: "Evidence & strength",
+					description: "Signals derived from your public repositories"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-5",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+						query: evidence,
+						loading: 5,
+						message: "Unable to load skill evidence.",
+						children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EvidenceList, { items: x })
+					})
+				})]
+			})
+		]
+	});
+}
+var statusLabel = {
+	COMPLETED: "Completed",
+	IN_PROGRESS: "In progress",
+	PLANNED: "Planned",
+	ARCHIVED: "Archived"
+};
+function ProjectDetails({ project }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Dialog, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTrigger, {
+		asChild: true,
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Button, {
+			variant: "outline",
+			size: "sm",
+			children: ["View details", /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, {})]
+		})
+	}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogContent, {
+		className: "max-h-[85vh] overflow-y-auto sm:max-w-2xl",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(DialogHeader, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogTitle, { children: project.name }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(DialogDescription, { children: project.description ?? "No description provided." })] }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "space-y-5",
+			children: [
+				["Key features", project.keyFeatures],
+				["Challenges", project.challenges],
+				["Learnings", project.learnings],
+				["Resume description", project.resumeDescription],
+				["Interview notes", project.interviewNotes]
+			].map(([l, v]) => v ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "text-xs font-medium uppercase text-muted-foreground",
+				children: l
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				className: "mt-2 text-sm leading-6 text-foreground",
+				children: v
+			})] }, l) : null)
+		})]
+	})] });
+}
+function ProjectsPage() {
+	const q = useQuery(projectsQuery);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "page-wrap",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageIntro, {
+			eyebrow: "Portfolio",
+			title: "Projects",
+			description: "A recruiter-ready view of what you built, the problems you solved, and the technologies you used."
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+			query: q,
+			loading: 6,
+			message: "Unable to load projects.",
+			children: (items) => items.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "grid gap-4 lg:grid-cols-2",
+				children: items.map((p) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+					className: "project-card",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "flex items-start justify-between gap-3",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+								className: "grid size-10 place-items-center rounded-md bg-secondary text-primary",
+								children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(FolderGit2, { className: "size-5" })
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Badge, {
+								className: `project-status status-${p.status.toLowerCase()}`,
+								variant: "outline",
+								children: statusLabel[p.status]
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+							className: "mt-5 text-lg font-semibold",
+							children: p.name
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-2 min-h-10 text-sm leading-5 text-muted-foreground",
+							children: p.description ?? "No description provided."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-4 flex flex-wrap gap-2",
+							children: p.skills.map((s) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "skill-chip",
+								children: s.name
+							}, s.id))
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-6 flex flex-wrap items-center gap-2",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ProjectDetails, { project: p }),
+								p.githubUrl ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									asChild: true,
+									variant: "ghost",
+									size: "sm",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+										href: p.githubUrl,
+										target: "_blank",
+										rel: "noreferrer",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Github, {}), "GitHub"]
+									})
+								}) : null,
+								p.liveUrl ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+									asChild: true,
+									variant: "ghost",
+									size: "sm",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("a", {
+										href: p.liveUrl,
+										target: "_blank",
+										rel: "noreferrer",
+										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ArrowUpRight, {}), "Live"]
+									})
+								}) : null
+							]
+						})
+					]
+				}, p.id))
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EmptyState, { title: "No projects added yet." })
+		})]
+	});
+}
+function GithubPage() {
+	const analytics = useQuery(githubAnalyticsQuery), activity = useQuery(githubActivityQuery), evidence = useQuery(skillEvidenceQuery);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "page-wrap",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageIntro, {
+				eyebrow: "Source intelligence",
+				title: "GitHub Analytics",
+				description: "Repository reach, language focus and a date-accurate view of contribution consistency."
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+				query: analytics,
+				loading: 6,
+				message: "Unable to load GitHub analytics.",
+				children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "grid gap-3 sm:grid-cols-2 xl:grid-cols-6",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Repositories",
+							value: x.totalRepositories,
+							icon: Github
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Original",
+							value: x.originalRepositories,
+							icon: BookOpenCheck
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Forked",
+							value: x.forkedRepositories,
+							icon: GitFork
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Stars",
+							value: x.totalStars,
+							icon: Star
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Forks",
+							value: x.totalForks,
+							icon: GitFork
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Top language",
+							value: x.mostUsedLanguage ?? "—",
+							icon: CodeXml
+						})
+					]
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+					className: "mt-5",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+						title: "Language distribution",
+						description: "Repositories by primary language"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "mt-4",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LanguageChart, { distribution: x.languageDistribution })
+					})]
+				})] })
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+				className: "mt-5 activity-panel",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, {
+					title: "Contribution activity",
+					description: "Commit intensity across backend-provided dates"
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-5",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+						query: activity,
+						loading: 4,
+						message: "Unable to load GitHub activity.",
+						children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "grid gap-3 sm:grid-cols-2 lg:grid-cols-4",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+									label: "Total commits",
+									value: x.totalCommits,
+									icon: GitCommitHorizontal
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+									label: "Active days",
+									value: x.activeDays,
+									icon: Activity
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+									label: "First activity",
+									value: x.firstActivity ? format(parseISO(x.firstActivity), "MMM d, yyyy") : "—"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+									label: "Last activity",
+									value: x.lastActivity ? format(parseISO(x.lastActivity), "MMM d, yyyy") : "—"
+								})
+							]
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+							className: "mt-8",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ContributionHeatmap, { commitsByDate: x.commitsByDate })
+						})] })
+					})
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+				className: "mt-5",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, { title: "GitHub skill evidence" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "mt-5",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+						query: evidence,
+						loading: 5,
+						message: "Unable to load skill evidence.",
+						children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(EvidenceList, { items: x })
+					})
+				})]
+			})
+		]
+	});
+}
+function CareerPage() {
+	const q = useQuery(careerQuery);
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		className: "page-wrap",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(PageIntro, {
+			eyebrow: "Career intelligence",
+			title: "Career Analytics",
+			description: "A consolidated, backend-calculated view of your readiness across five developer signals."
+		}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(QueryBlock, {
+			query: q,
+			loading: 5,
+			message: "Unable to load career analytics.",
+			children: (x) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+				className: "score-hero",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "eyebrow",
+							children: "Calculated metric"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
+							className: "mt-2 text-xl font-semibold",
+							children: "Career readiness score"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-2 max-w-md text-sm leading-6 text-muted-foreground",
+							children: "This score comes directly from career analytics and is never generated in the frontend."
+						})
+					] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScoreRing, { value: x.careerScore }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "min-w-0 flex-1",
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ScoreComparison, { data: [
+							{
+								name: "DSA",
+								score: x.dsaScore
+							},
+							{
+								name: "Skills",
+								score: x.skillsScore
+							},
+							{
+								name: "Projects",
+								score: x.projectsScore
+							},
+							{
+								name: "GitHub",
+								score: x.githubScore
+							},
+							{
+								name: "Consistency",
+								score: x.consistencyScore
+							}
+						] })
+					})
+				]
+			}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-5 grid gap-5 lg:grid-cols-2",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, { title: "DSA" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "DevTrack solved",
+								value: x.dsa.devTrackSolved
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "LeetCode solved",
+								value: x.dsa.leetCodeSolved
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Easy",
+								value: x.dsa.easySolved
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Medium",
+								value: x.dsa.mediumSolved
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Hard",
+								value: x.dsa.hardSolved
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Current streak",
+								value: x.dsa.currentStreak
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Longest streak",
+								value: x.dsa.longestStreak
+							})
+						]
+					})] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, { title: "GitHub" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Repositories",
+								value: x.github.repositories
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Original",
+								value: x.github.originalRepositories
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Stars",
+								value: x.github.totalStars
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Forks",
+								value: x.github.totalForks
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Active days",
+								value: x.github.activeDays
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Commits",
+								value: x.github.totalCommits
+							})
+						]
+					})] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, { title: "Skills" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-5 grid grid-cols-2 gap-3",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Total skills",
+							value: x.skills.totalSkills
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+							label: "Average strength",
+							value: `${x.skills.averageStrength}%`
+						})]
+					})] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, { children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, { title: "Projects" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-5 grid grid-cols-3 gap-3",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Total",
+								value: x.projects.totalProjects
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "Completed",
+								value: x.projects.completedProjects
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+								label: "In progress",
+								value: x.projects.inProgressProjects
+							})
+						]
+					})] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Panel, {
+						className: "lg:col-span-2",
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SectionHeader, { title: "Consistency" }), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+							className: "mt-5 grid gap-3 sm:grid-cols-3",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+									label: "DSA current streak",
+									value: x.consistency.dsaCurrentStreak
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+									label: "DSA longest streak",
+									value: x.consistency.dsaLongestStreak
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(MetricCard, {
+									label: "GitHub active days",
+									value: x.consistency.githubActiveDays
+								})
+							]
+						})]
+					})
+				]
+			})] })
+		})]
+	});
+}
+//#endregion
+export { ProjectsPage as a, GithubPage as i, DashboardPage as n, SkillsPage as o, DsaPage as r, CareerPage as t };

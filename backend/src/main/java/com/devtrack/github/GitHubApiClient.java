@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.cache.annotation.Cacheable;
 
 @Component
 public class GitHubApiClient {
@@ -17,6 +18,7 @@ public class GitHubApiClient {
                 .build();
     }
 
+    @Cacheable(cacheNames = "githubProfiles", key = "#username")
     public GitHubProfile getProfile(String username) {
 
         try {
@@ -30,7 +32,7 @@ public class GitHubApiClient {
             if (e.getStatusCode().value() == 403) {
                 throw new GitHubApiException(
                         "GitHub API rate limit exceeded",
-                        403,
+                        429,
                         e
                 );
             }
@@ -51,6 +53,7 @@ public class GitHubApiClient {
         }
     }
 
+    @Cacheable(cacheNames = "githubRepositories", key = "#username")
     public GitHubRepository[] getRepositories(String username) {
 
         try {
@@ -68,7 +71,7 @@ public class GitHubApiClient {
             if (e.getStatusCode().value() == 403) {
                 throw new GitHubApiException(
                         "GitHub API rate limit exceeded",
-                        403,
+                        429,
                         e
                 );
             }
@@ -89,6 +92,7 @@ public class GitHubApiClient {
         }
     }
 
+    @Cacheable(cacheNames = "githubCommits", key = "#username + ':' + #repository + ':' + #page")
     public GitHubCommit[] getCommits(
             String username,
             String repository,
@@ -115,7 +119,7 @@ public class GitHubApiClient {
             if (e.getStatusCode().value() == 403) {
                 throw new GitHubApiException(
                         "GitHub API rate limit exceeded",
-                        403,
+                        429,
                         e
                 );
             }
